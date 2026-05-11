@@ -1,0 +1,17 @@
+name: "beshell-FastAccelStepper"
+version: "1.0.0"
+description: "FastAccelStepper wrapper for BeShell"
+keywords:
+  - "JavaScript"
+  - "QuickJS"
+  - "FastAccelStepper"
+authors:
+  - "alee201@163.com"
+homepage: "https://beshell.become.cool"
+url: "https://beshell.become.cool"
+repository: "https://github.com/become-cool/beshell-FastAccelStepper.git"
+license: "LGPL"
+dependencies:
+  "become-cool/beshell":
+    version: ">=1.0.10"
+  gin66/fastaccelstepper: ^1.2.5

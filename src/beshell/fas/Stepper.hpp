@@ -15,6 +15,7 @@ namespace be::fas {
         ::FastAccelStepper * stepper = nullptr ;
 
         std::vector<ISRData*> limitPins;
+        volatile bool ignoreLimitFlag = 0;
         volatile TickType_t lastLimitEventTick = 0;
 
         static void limitISR(void* arg) ;
@@ -89,6 +90,7 @@ namespace be::fas {
 
         static JSValue waitStop(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) ;
         static JSValue setLimitPin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) ;
+        static JSValue ignoreLimit(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) ;
 
     protected:
         virtual void onNativeEvent(JSContext *ctx, void * param) ;

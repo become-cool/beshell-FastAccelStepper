@@ -103,6 +103,7 @@ namespace be::fas {
 
         JS_CFUNC_DEF("waitStop", 0, Stepper::waitStop),
         JS_CFUNC_DEF("setLimitPin", 0, Stepper::setLimitPin),
+        JS_CFUNC_DEF("ignoreLimit", 0, Stepper::ignoreLimit),
     } ;
 
     Stepper::Stepper(JSContext * ctx, FastAccelStepper * stepper)
@@ -1373,7 +1374,7 @@ namespace be::fas {
         Stepper* stepper = data->stepper;
         uint8_t pin = data->pin;
 
-        if(!stepper->stepper->isRunning()) {
+        if(stepper->ignoreLimitFlag || !stepper->stepper->isRunning()) {
             return ;
         }
 
@@ -1388,6 +1389,16 @@ namespace be::fas {
 
         LimitEventParam evt = { pin };
         stepper->emitNativeEvent(&evt, true);
+    }
+
+    JSValue Stepper::ignoreLimit(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+        THIS_NCLASS(Stepper, stepper)
+        bool ignore = true;
+        if(argc > 0) {
+            ignore = JS_ToBool(ctx, argv[0]);
+        }
+        stepper->ignoreLimitFlag = ignore;
+        return JS_UNDEFINED;
     }
 
     void Stepper::onNativeEvent(JSContext *ctx, void * param) {

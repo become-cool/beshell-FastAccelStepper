@@ -16,6 +16,8 @@ namespace be::fas {
         exportClass<Stepper>() ;
         exportFunction("setup",setup,0) ;
         exportFunction("stepperConnectToPin",stepperConnectToPin,0) ;
+
+        exportValue("version", JS_NewString(ctx, "1.0.1")) ;
     }
 
     // void FastAccelStepperModule::use(be::BeShell * beshell) {

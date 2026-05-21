@@ -1,10 +1,13 @@
 name: "beshell-FastAccelStepper"
-version: "1.0.1"
+version: "1.0.2"
 description: "FastAccelStepper wrapper for BeShell"
 keywords:
   - "JavaScript"
   - "QuickJS"
   - "FastAccelStepper"
+  - "motor control"
+  - "stepper motor"
+  - "motion control"
 authors:
   - "alee201@163.com"
 homepage: "https://beshell.become.cool"
@@ -13,5 +16,5 @@ repository: "https://github.com/become-cool/beshell-FastAccelStepper.git"
 license: "LGPL"
 dependencies:
   "become-cool/beshell":
-    version: ">=1.0.11"
+    version: ">=1.0.12"
   gin66/fastaccelstepper: ^1.2.5

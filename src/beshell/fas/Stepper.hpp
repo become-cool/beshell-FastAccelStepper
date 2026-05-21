@@ -17,8 +17,10 @@ namespace be::fas {
         std::vector<ISRData*> limitPins;
         volatile bool ignoreLimitFlag = 0;
         volatile TickType_t lastLimitEventTick = 0;
+        TaskHandle_t _limitTaskHandle = nullptr;
 
-        static void limitISR(void* arg) ;
+        static void IRAM_ATTR limitISR(void* arg) ;
+        static void limitTaskFunc(void* arg) ;
 
     public:
         Stepper(JSContext * ctx, ::FastAccelStepper * stepper) ;

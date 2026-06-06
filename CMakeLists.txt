@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.24)
 
 
 # 源码目录
-file(GLOB_RECURSE src_beshell_ota
+file(GLOB_RECURSE src_beshell_fas
         src/beshell/fas/*.c
         src/beshell/fas/*.cpp
     )
@@ -11,14 +11,14 @@ file(GLOB_RECURSE src_beshell_ota
 
 idf_component_register(
         SRCS
-            ${src_beshell_ota}
-        INCLUDE_DIRS 
+            ${src_beshell_fas}
+        INCLUDE_DIRS
             ./src
         PRIV_REQUIRES
             beshell
 )
 
-target_include_directories(${COMPONENT_LIB} PRIVATE src/beshell/FastAccelStepper)
+target_include_directories(${COMPONENT_LIB} PRIVATE src/beshell/fas)
 
 set(CMAKE_CXX_STANDARD 11)
 
